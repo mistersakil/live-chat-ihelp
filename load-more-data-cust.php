@@ -14,8 +14,8 @@ $send_by = $_POST['send_by'];
 $chat_id = $_POST['chat_id'];
 
 $text_message = "";
-$result_msglist = mysql_query("SELECT * FROM `chat_customer` WHERE chat_id = '" . $chat_id . "' LIMIT " . $total_message . ", " . $data_limit);
-while ($row_msglist = mysql_fetch_assoc($result_msglist)) {
+$result_msglist = $conn->query("SELECT * FROM `chat_customer` WHERE chat_id = '" . $chat_id . "' LIMIT " . $total_message . ", " . $data_limit);
+while ($row_msglist = ($result_msglist->fetch_assoc())) {
 	if ($send_by == $row_msglist['user']) {
 		$text_message .= "<div class='msgln' style='text-align: right;'>";
 		$text_message .= $row_msglist['message'] . "&nbsp;&nbsp;&nbsp;&nbsp;<b class='user-name' style='background: green;'>" . $row_msglist['user'] . "</b><br>";
