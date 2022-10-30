@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION["passLiveChat"] = $row['pass'];
             $_SESSION["userGroupLiveChat"] = $row['user_group'];
             $_SESSION['isLoggedLiveChat'] = TRUE;
+			
         }
     } else {
         $message = "Invalid Username or Password!";
@@ -117,7 +118,7 @@ if (isset($_SESSION["userLiveChat"])) {
                         <a href="index.html"><i class="halflings-icon home"></i></a>
                         <a href="#"><i class="halflings-icon cog"></i></a>
                     </div>
-                    <h2>Login to your account</h2>
+                    <h2>Login your account</h2>
                     <form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <fieldset>
 
