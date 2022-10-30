@@ -12,7 +12,7 @@
         <!-- start: Main Menu -->
         <?php include('menu.php'); ?>
         <!-- end: Main Menu -->
-        <?php echo "after menu"; ?>
+
         <noscript>
             <div class="alert alert-block span10">
                 <h4 class="alert-heading">Warning!</h4>
@@ -21,22 +21,20 @@
             </div>
         </noscript>
 
-        <!-- start: Content -->
+        <!-- start:  main content section -->
         <div id="content" class="span10">
-
-            <?php //include('breadcrumb.php');
-            ?>
-
-            <!-- start : main content section-->
             <?php
-            // if ($_GET['type'] == 'cust') {
-            //     include_once 'home-cust.php';
-            // } else {
-            //     include_once 'home.php';
-            // }
-            // include_once 'home.php';
+            ## breadcrumb 
+            include('breadcrumb.php');
+            ## Load home page for customer or agent
+            if (isset($_GET['type']) && $_GET['type'] == 'cust') {
+                include_once 'home-cust.php';
+            }
+            if (isset($_GET['p'])) {
+                include_once 'home.php';
+            }
             ?>
-            <!-- end : main content section-->
+            <!-- end : main content section -->
 
 
         </div>
@@ -50,14 +48,14 @@
 
 <script>
 $(document).ready(function() {
-    setInterval(function() {
-        loadNotificationCounter()
-    }, 3000);
+    // setInterval(function() {
+    //     loadNotificationCounter()
+    // }, 3000);
 
     function loadNotificationCounter() {
         $("#myULEx").load(location.href + " #myULEx");
         $.ajax({
-            url: 'notification-search-counter.php',
+            // url: 'notification-search-counter.php',
             type: 'post',
             //data:{
             //received_by:received_by

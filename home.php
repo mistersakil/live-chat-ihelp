@@ -4,17 +4,17 @@
             <?php
 			$received_by = $_GET['p'];
 			$send_by = $_SESSION["userLiveChat"];
-			$conn->query("DELETE FROM `chat`.`internal_conversation_notification` WHERE send_by = '" . $received_by . "' AND received_by = '" . $received_by . "'");
-			$result_msglist_count = $conn->query("SELECT count(*) as totmsg FROM `chat`.`internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "')");
-			$row_count = ($result_msglist_count->fetch_assoc);
+			$conn->query("DELETE FROM `internal_conversation_notification` WHERE send_by = '" . $received_by . "' AND received_by = '" . $received_by . "'");
+			$result_msglist_count = $conn->query("SELECT count(*) as totmsg FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "')");
+			$row_count = ($result_msglist_count->fetch_assoc());
 			$total_message = $row_count['totmsg'];
 			if ($total_message < 50) {
 				$total_message = 0;
 			} else {
 				$total_message = $total_message - 50;
 			}
-			$result_msglist = $conn->query("SELECT * FROM `chat`.`internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "') ORDER BY `id` ASC LIMIT $total_message, 50");
-			while ($row_msglist = ($result_msglist->fetch_assoc)) {
+			$result_msglist = $conn->query("SELECT * FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "') ORDER BY `id` ASC LIMIT $total_message, 50");
+			while ($row_msglist = ($result_msglist->fetch_assoc())) {
 				if ($send_by == $row_msglist['send_by']) {
 					echo "<div class='msgln' style='text-align: right;'>";
 					echo $row_msglist['coversation_sms'] . "&nbsp;&nbsp;&nbsp;&nbsp;<b class='user-name' style='background: green;'>" . $row_msglist['send_by'] . "</b><br>";
