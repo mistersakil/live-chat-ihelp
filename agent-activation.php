@@ -29,7 +29,7 @@ if ($action == 'user_status') {
 	}
 	$ssql = "SELECT * FROM `agent_status` WHERE `agent_id` = '$user'";
 	$qry = $conn->query($ssql);
-	$row_count = mysqli_num_rows($qry);
+	$row_count = ($qry->num_rows);
 	if ($row_count > 0) {
 		$sql = "UPDATE `agent_status` SET `status` = '$st_status', `last_status_change` = '$now_time' WHERE `agent_id` = '$user'";
 		$conn->query($sql);
@@ -42,7 +42,7 @@ if ($action == 'user_status') {
 	$sql = "SELECT * FROM `chat_id` WHERE `agent_name` = '$user' AND `agent_close` <> 'YES'";
 	$result = $conn->query($sql);
 	$my_output = '';
-	while ($row = mysqli_fetch_assoc($result)) {
+	while ($row = ($result->fetch_assoc())) {
 		$my_output = $my_output . "<button type=\"button\" onClick=\"chatlistCustomerSet('" . $user . "','" . $row['id'] . "')\" class=\"btn btn-success btn-block\" style=\"background-color: #5cb85c;height: 35px; margin: 5px; border-radius: 10px;border: 2px solid #0066FF;\"> " . $row['customer_id'] . "</button>";
 	}
 	echo $my_output;
