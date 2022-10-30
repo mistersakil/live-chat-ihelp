@@ -2,15 +2,16 @@
 session_start();
 ?>
 <?php
+if (file_exists('libs/database.php')) {
+    require_once 'libs/database.php';
+}
 if (file_exists('libs/const.php')) {
     require_once 'libs/const.php';
 }
 if (file_exists('libs/functions.php')) {
     require_once 'libs/functions.php';
 }
-if (file_exists('libs/database.php')) {
-    require_once 'libs/database.php';
-}
+
 
 if (isset($_SESSION['isLoggedLiveChat']) !== TRUE) {
     header('location:login.php');
@@ -85,7 +86,8 @@ if (isset($_SESSION['isLoggedLiveChat']) !== TRUE) {
 
                 <a class="brand" href="<?php echo 'http://' . $_SERVER['HTTP_HOST'] . $path_info['dirname']; ?>">
                     <!--<img src="../wallboard/img/image_2022_08_08T07_35_18_363Z.png" alt="logo" class="img-responsive mainLogo" style="height: 35%; width: 35%">-->
-					<img src="./img/logo-white.png" alt="logo" class="img-responsive mainLogo" style="height: 45%; width: 45%; padding-top: 7px;">
+                    <img src="./img/logo-white.png" alt="logo" class="img-responsive mainLogo"
+                        style="height: 45%; width: 45%; padding-top: 7px;">
                 </a>
 
 
@@ -116,10 +118,16 @@ if (isset($_SESSION['isLoggedLiveChat']) !== TRUE) {
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <?php
-                            $st_sql = mysql_query("SELECT * FROM `chat`.`agent_status` WHERE `agent_id` = '" . $_SESSION['userLiveChat'] . "'");
-                            $result_st = mysql_fetch_assoc($st_sql);
-                            if ($result_st['status'] == '1') {
-                                $view_status = "<i class=\"fa fa-circle\" style=\"color: green;\"></i> Online";
+                            $sql = "SELECT * FROM `agent_status` WHERE `agent_id` = '" . $_SESSION['userLiveChat'] . "'";
+
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+
+                                if ($row['status'] == '1') {
+                                    $view_status = "<i class=\"fa fa-circle\" style=\"color: green;\"></i> Online";
+                                }
                             } else {
                                 $view_status = "<i class=\"fa fa-circle\" style=\"color: gray;\"></i> Offline";
                             }
@@ -128,14 +136,21 @@ if (isset($_SESSION['isLoggedLiveChat']) !== TRUE) {
                                 <?php echo $view_status; ?>
                             </a>
                             <ul class="dropdown-menu phone_add_function">
-                                <li onclick="changeUserStatus('YES')"><a href="#"><i class="fa fa-circle"
-                                            style="color: green;"></i> Online</a></li>
-                                <li onclick="changeUserStatus('NO')"><a href="#"><i class="fa fa-circle"
-                                            style="color: gray;"></i> Offline</a></li>
+                                <li onclick="changeUserStatus('YES')">
+                                    <a href="#">
+                                        <i class="fa fa-circle" style="color: green;"></i>
+                                        Online
+                                    </a>
+                                </li>
+                                <li onclick="changeUserStatus('NO')">
+                                    <a href="#">
+                                        <i class="fa fa-circle" style="color: gray;"></i>
+                                        Offline
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
-
 
                 </div>
                 <!-- end: Header Menu -->

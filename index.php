@@ -2,6 +2,8 @@
 
 <?php include('header.php'); ?>
 
+
+
 <!-- end : Header -->
 
 <div class="container-fluid-full">
@@ -10,7 +12,7 @@
         <!-- start: Main Menu -->
         <?php include('menu.php'); ?>
         <!-- end: Main Menu -->
-
+        <?php echo "after menu"; ?>
         <noscript>
             <div class="alert alert-block span10">
                 <h4 class="alert-heading">Warning!</h4>
@@ -21,16 +23,19 @@
 
         <!-- start: Content -->
         <div id="content" class="span10">
-            <?php include('breadcrumb.php'); ?>
+
+            <?php //include('breadcrumb.php');
+            ?>
 
             <!-- start : main content section-->
             <?php
-			if ($_GET['type'] == 'cust') {
-				include_once 'home-cust.php';
-			} else {
-				include_once 'home.php';
-			}
-			?>
+            // if ($_GET['type'] == 'cust') {
+            //     include_once 'home-cust.php';
+            // } else {
+            //     include_once 'home.php';
+            // }
+            // include_once 'home.php';
+            ?>
             <!-- end : main content section-->
 
 
@@ -78,7 +83,7 @@ $(document).ready(function() {
                                 para.setAttribute("id", "cc_" + useArray[arrlength]);
                                 para.setAttribute("style", "background-color:red;");
                                 const element = document.getElementById("aa_" + useArray[
-                                arrlength]);
+                                    arrlength]);
                                 element.appendChild(para);
 
                                 var audio = new Audio('new_sms_tone.mp3');

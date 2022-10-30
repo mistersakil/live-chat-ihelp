@@ -1,13 +1,14 @@
 <?php
+$servername = "localhost";
 $username = "root";
-$password = "iHelpBD@2017";
-$hostname = "localhost";
-$con = mysql_connect($hostname, $username, $password)
-    or die("Unable to connect to MySQL");
-mysql_select_db("asterisk", $con);
+$dbname = "asterisk";
+// $password = "iHelpBD@2017";
+$password = "";
 
-if (!$con) {
-    die('Could not connect to database! Server ip - ' . $hostname . ' <br/>');
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
-//mysql_close($connect);

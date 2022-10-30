@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php include_once 'libs/database.php'; ?>
-<?php include_once 'libs/const.php'; ?>
+<?php require_once 'libs/database.php'; ?>
+<?php require_once 'libs/const.php'; ?>
 <?php
 
 $message = "";
@@ -8,8 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
         $user = $_POST["username"];
         $password = $_POST["password"];
-        $result = mysql_query("SELECT * FROM vicidial_users WHERE user='" . $user . "' and pass = '" . $password . "'");
-        $row = mysql_fetch_array($result);
+        $sql = "SELECT * FROM vicidial_users WHERE user='" . $user . "' and pass = '" . $password . "'";
+        $result = $conn->query($sql);
+        // var_export($result);
+        $row = $result->fetch_assoc();
+        // var_export($row);
+        // die($row);
         if (is_array($row)) {
             $_SESSION["user_idLiveChat"] = $row['user_id'];
             $_SESSION["userLiveChat"] = $row['user'];
@@ -29,8 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $tot_len = strlen($user_pass);
         $user = substr($user_pass, 0, $pos_loc);
         $password = substr($user_pass, $pos_loc + 1, $tot_len - $pos_loc);
-        $result = mysql_query("SELECT * FROM vicidial_users WHERE user='" . $user . "' and pass = '" . $password . "'");
-        $row = mysql_fetch_array($result);
+        $sql = "SELECT * FROM vicidial_users WHERE user='" . $user . "' and pass = '" . $password . "'";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
         if (is_array($row)) {
             $_SESSION["user_idLiveChat"] = $row['user_id'];
             $_SESSION["userLiveChat"] = $row['user'];
@@ -45,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 if (isset($_SESSION["userLiveChat"])) {
     //header("Location:" . BASE_URL);
-    $result = mysql_query("SELECT * FROM `chat`.`internal_conversation` WHERE send_by='" . $_SESSION["userLiveChat"] . "' OR received_by = '" . $_SESSION["userLiveChat"] . "' ORDER BY `id` DESC LIMIT 1");
-    $row = mysql_fetch_array($result);
+    $result = $conn->query("SELECT * FROM `internal_conversation` WHERE send_by='" . $_SESSION["userLiveChat"] . "' OR received_by = '" . $_SESSION["userLiveChat"] . "' ORDER BY `id` DESC LIMIT 1");
+    $row = $result->fetch_assoc();
     if (is_array($row)) {
         if ($row['send_by'] != $_SESSION["userLiveChat"]) {
             header("Location: ./?p=" . $row['send_by']);

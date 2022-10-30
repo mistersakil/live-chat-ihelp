@@ -1,6 +1,4 @@
 <?php
-//echo "Test";
-
 session_start();
 if(isset($_SESSION['userLiveChat'])){
 	include('./libs/chat-db.php');
@@ -14,4 +12,3 @@ if(isset($_SESSION['userLiveChat'])){
 	$text_message = substr($text_message,0,-1);
     echo $text_message;
 }
-?>
