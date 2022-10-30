@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 if (isset($_SESSION['name'])) {
 	// include('./libs/sqli-db.php');

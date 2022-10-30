@@ -48,18 +48,18 @@
 
 <script>
 $(document).ready(function() {
-    // setInterval(function() {
-    //     loadNotificationCounter()
-    // }, 3000);
+    setInterval(function() {
+        loadNotificationCounter()
+    }, 3000);
 
     function loadNotificationCounter() {
         $("#myULEx").load(location.href + " #myULEx");
         $.ajax({
-            // url: 'notification-search-counter.php',
+            url: 'notification-search-counter.php',
             type: 'post',
-            //data:{
-            //received_by:received_by
-            //},
+            // data: {
+            //     received_by: received_by
+            // },
             success: (result, status, http) => {
                 if (status === 'success') {
                     //console.log("Hello world!");

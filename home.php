@@ -2,32 +2,32 @@
     <div id="wrapper">
         <div id="chatbox">
             <?php
-			$received_by = $_GET['p'];
-			$send_by = $_SESSION["userLiveChat"];
-			$conn->query("DELETE FROM `internal_conversation_notification` WHERE send_by = '" . $received_by . "' AND received_by = '" . $received_by . "'");
-			$result_msglist_count = $conn->query("SELECT count(*) as totmsg FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "')");
-			$row_count = ($result_msglist_count->fetch_assoc());
-			$total_message = $row_count['totmsg'];
-			if ($total_message < 50) {
-				$total_message = 0;
-			} else {
-				$total_message = $total_message - 50;
-			}
-			$result_msglist = $conn->query("SELECT * FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "') ORDER BY `id` ASC LIMIT $total_message, 50");
-			while ($row_msglist = ($result_msglist->fetch_assoc())) {
-				if ($send_by == $row_msglist['send_by']) {
-					echo "<div class='msgln' style='text-align: right;'>";
-					echo $row_msglist['coversation_sms'] . "&nbsp;&nbsp;&nbsp;&nbsp;<b class='user-name' style='background: green;'>" . $row_msglist['send_by'] . "</b><br>";
-					echo "<span class='chat-time'>" . $row_msglist['create_time'] . "</span>";
-					echo "</div>";
-				} else {
-					echo "<div class='msgln'>";
-					echo "<b class='user-name'>" . $row_msglist['send_by'] . "</b>" . $row_msglist['coversation_sms'] . "<br>";
-					echo "<span class='chat-time'>" . $row_msglist['create_time'] . "</span>";
-					echo "</div>";
-				}
-			}
-			?>
+            $received_by = $_GET['p'];
+            $send_by = $_SESSION["userLiveChat"];
+            $conn->query("DELETE FROM `internal_conversation_notification` WHERE send_by = '" . $received_by . "' AND received_by = '" . $received_by . "'");
+            $result_msglist_count = $conn->query("SELECT count(*) as totmsg FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "')");
+            $row_count = ($result_msglist_count->fetch_assoc());
+            $total_message = $row_count['totmsg'];
+            if ($total_message < 50) {
+                $total_message = 0;
+            } else {
+                $total_message = $total_message - 50;
+            }
+            $result_msglist = $conn->query("SELECT * FROM `internal_conversation` WHERE send_by IN ('" . $received_by . "','" . $send_by . "') and received_by IN ('" . $received_by . "','" . $send_by . "') ORDER BY `id` ASC LIMIT $total_message, 50");
+            while ($row_msglist = ($result_msglist->fetch_assoc())) {
+                if ($send_by == $row_msglist['send_by']) {
+                    echo "<div class='msgln' style='text-align: right;'>";
+                    echo $row_msglist['coversation_sms'] . "&nbsp;&nbsp;&nbsp;&nbsp;<b class='user-name' style='background: green;'>" . $row_msglist['send_by'] . "</b><br>";
+                    echo "<span class='chat-time'>" . $row_msglist['create_time'] . "</span>";
+                    echo "</div>";
+                } else {
+                    echo "<div class='msgln'>";
+                    echo "<b class='user-name'>" . $row_msglist['send_by'] . "</b>" . $row_msglist['coversation_sms'] . "<br>";
+                    echo "<span class='chat-time'>" . $row_msglist['create_time'] . "</span>";
+                    echo "</div>";
+                }
+            }
+            ?>
         </div>
 
         <form name="message" id="message" action="">
@@ -80,22 +80,25 @@ $("#chatbox").scroll(function() {
 
 });
 $("#submitmsg").click(function() {
-    //alert("clicked");
+    // alert("clicked");
     var clientmsg = $("#usermsg").val();
     var send_by = $("#send_by").val();
     var received_by = $("#received_by").val();
     var chatbox = $("#chatbox").html();
     var element = document.getElementById("chatbox");
-
+    const data = {
+        text: clientmsg,
+        send_by: send_by,
+        received_by: received_by
+    };
+    // console.log(data);
     $.ajax({
-        url: 'post.php',
+        url: './post.php',
         type: 'post',
-        data: {
-            text: clientmsg,
-            send_by: send_by,
-            received_by: received_by
-        },
+        data: data,
+        dataType: "text",
         success: (result, status, http) => {
+            console.log(result, status, http);
             if (status === 'success') {
                 $("#usermsg").val("");
                 $('#chatbox').html(chatbox + result);
