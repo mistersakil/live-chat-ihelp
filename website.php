@@ -45,9 +45,9 @@
 
     window.onload = function() {
         let chatLogo = document.querySelector('.logo');
-        let iHelpConversation = document.querySelector('#iHelpConversation');
+        let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
         chatLogo.addEventListener('click', function() {
-            displayToggle(iHelpConversation);
+            displayToggle(iHelpLiveChatContainer);
         });
 
     }
