@@ -1,7 +1,24 @@
+<style>
+#iHelpChatConversationDetails::-webkit-scrollbar {
+    width: 1px;
+    background: rgba(100, 100, 100, .3);
+}
+
+#iHelpChatConversationDetails::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 255, 1); */
+    border-radius: 15px;
+}
+
+#iHelpChatConversationDetails::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
+    background: transparent;
+}
+</style>
 <img class="logo" src="https://ihelpbd.com/images_old/favicon.ico" alt="logo"
     style="width:50px; height: 50px; border-radius: 50%; position: absolute; right: 10px; bottom: 10px; cursor:pointer" />
 
-<section id="iHelpLiveChatContainer" style="width: 300px;height:400px; display:flex; flex-direction: column;
+<section id="iHelpLiveChatContainer" style="width: 300px;height:500px; display:flex; flex-direction: column;
     background: grey; position: fixed; right: 70px; bottom: 0; color:white; font-size:16px" data-display="hidden">
     <h2 style="width: 100%;
     font-size: 20px;
@@ -94,22 +111,20 @@
         </p>
     </aside>
     <!-- End: Registration Form  -->
-    <!-- Conversation form  -->
+    <!-- Conversation section  -->
     <aside data-display="hidden" id="iHelpChatConversation">
+
         <div style="
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
-        padding: 10px;
+        padding: 5px;
         gap: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid dimgrey;
         ">
-            <label for="iHelpChatConversationDetails" title="Required">
-                Conversation
-            </label>
             <main style="
             width: 100%;
             padding: 5px;
@@ -117,13 +132,27 @@
             outline: none;
             border: none;
             resize: none;
-            height: 150px;   
-            background:white;       
+            height: 250px;   
+            background:transparent;       
             color:rgba(100,100,100,1);  
             text-align: left;
             text-transform: capitalize;
+            overflow-x: hidden;
+            overflow-y: scroll;
 
             " id="iHelpChatConversationDetails">
+                <div class="iHelpChatAgentCurrentMessage" style="
+                background-color: pink;
+                padding: 5px;
+                height: auto;
+                border-radius: 10px;
+                ">
+                    <p style="
+                    font-size: 20px;
+                    font-weight: 700;
+                    ">System</p>
+                    <p>Please wait, we will come back you soon</p>
+                </div>
 
             </main>
         </div>
@@ -191,6 +220,6 @@
             " id="iHelpChatStopSession" type="button" value="Stop Chat" />
         </div>
     </aside>
-    <!-- End: Conversation form  -->
+    <!-- End: Conversation section  -->
 
 </section>
