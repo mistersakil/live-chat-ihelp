@@ -44,20 +44,26 @@
     fetchLiveChat();
 
     window.onload = function() {
-        let chatLogo = document.querySelector('.logo');
+
         let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
-        chatLogo.addEventListener('click', function() {
-            displayToggle(iHelpLiveChatContainer);
+        document.querySelector('.logo').addEventListener('click', function() {
+            displayToggler(iHelpLiveChatContainer);
         });
+
+        /* Start conversation after register */
+        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
+            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
+            displayToggler(iHelpChatRegistrationForm);
+        }
 
     }
 
     /**
-     * Display toggle
+     * Display toggler
      * @param {element} DomElement
      * @return void
      */
-    function displayToggle(element = null) {
+    function displayToggler(element = null) {
         let displayType = element.getAttribute('data-display');
         if (displayType == 'hidden') {
             element.style.display = 'block';

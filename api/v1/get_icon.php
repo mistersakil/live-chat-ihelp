@@ -12,7 +12,7 @@
     text-align: center;
     line-height: 35px;">Live Customer Support</h2>
     <!-- Registration Form  -->
-    <aside class="iHelpChatRegistrationForm" style="display: none;">
+    <aside data-display="visible" id="iHelpChatRegistrationForm" style="display: none;">
         <p style="display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -90,12 +90,12 @@
     cursor:pointer;
     background: darkred;
     color:white;
-    " id="question" type="button" value="Submit">
+    " id="iHelpChatRegistrationBtn" type="button" value="Submit">
         </p>
     </aside>
     <!-- End: Registration Form  -->
     <!-- Conversation form  -->
-    <aside id="iHelpChatConversation">
+    <aside data-display="hidden" id="iHelpChatConversation">
         <div style="
         display: flex;
         flex-direction: column;
@@ -152,19 +152,20 @@
             height: 50px;
             " id="iHelpChatWiteYourMessage" type="text"></textarea>
         </p>
-        <p style="
+        <div style="
         display: flex;
-        flex-direction: column;
+        flex-direction: row-reverse;
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
+        height:40px;
         padding: 10px;
         gap: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid dimgrey;
         ">
             <input style="
-            width: 100%;
+            width: 50%;
             height: 40px;
             padding: 5px;
             font-size: 16px;
@@ -174,8 +175,21 @@
             background: darkred;
             color:white;
 
-            " id="iHelpChatSend" type="button" value="Send" />
-        </p>
+            " id="iHelpChatSendText" type="button" value="Send" />
+
+            <input style="
+            width: 50%;
+            height: 40px;
+            padding: 5px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            cursor:pointer;
+            background: red;
+            color:white;
+
+            " id="iHelpChatStopSession" type="button" value="Stop Chat" />
+        </div>
     </aside>
     <!-- End: Conversation form  -->
 
