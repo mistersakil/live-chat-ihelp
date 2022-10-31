@@ -21,47 +21,56 @@
         width: 100%;
         height: 100vh;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         font-size: 40px;
-        color: red;
+        color: darkcyan;
 
     }
     </style>
 </head>
 
 <body>
-    <h1>This is a client website</h1>
-    <article></article>
+    <h1 id="heading">This is a client website</h1>
+
     <script>
-    fetch('./api/v1/get_icon.php')
-        .then(function(response) {
-            return response.text()
-        })
-        .then(function(html) {
-            const div = document.createElement("div");
-            div.innerHTML = html;
-            document.body.appendChild(div);
-        })
-        .catch(function(err) {
-            console.log('Failed to fetch page: ', err);
+    async function fetchLiveChat() {
+        let getIconApi = await fetch('./api/v1/get_icon.php');
+        let getResponseText = await getIconApi.text();
+        const div = document.createElement("div");
+        div.innerHTML = getResponseText;
+        document.body.prepend(div);
+    }
+    fetchLiveChat();
+
+    window.onload = function() {
+        let chatLogo = document.querySelector('.logo');
+        let iHelpConversation = document.querySelector('#iHelpConversation');
+        chatLogo.addEventListener('click', function() {
+            displayToggle(iHelpConversation);
         });
+
+    }
+
+    /**
+     * Display toggle
+     * @param {element} DomElement
+     * @return void
+     */
+    function displayToggle(element = null) {
+        let displayType = element.getAttribute('data-display');
+        if (displayType == 'hidden') {
+            element.style.display = 'block';
+            element.setAttribute("data-display", "visible");
+        } else {
+            element.style.display = 'none';
+            element.setAttribute("data-display", "hidden");
+        }
+    }
     </script>
 
 </body>
 
-<script>
-fetch('./api/v1/get_icon.php').then(response => {
-        // console.log(response.text);
-        return response.text;
-    })
-    .then(html => {
-        console.log(html);
-    })
-    .catch(err => {
-        console.log(err);
-    });
-</script>
 
 
 </html>
