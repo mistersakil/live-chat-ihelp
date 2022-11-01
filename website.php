@@ -57,9 +57,29 @@
         }
         /* Send conversation text to customer care */
 
-        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
-            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
-            displayToggler(iHelpChatRegistrationForm);
+        document.querySelector('#iHelpChatSendTextBtn').onclick = function() {
+            let iHelpChatCustomerCurrentMessage = document.querySelector('.iHelpChatCustomerCurrentMessage');
+            let customerName = iHelpChatCustomerCurrentMessage.querySelector('.customerName');
+            let customerText = iHelpChatCustomerCurrentMessage.querySelector('.customerText');
+            /* Get write your message box */
+            let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
+            /* Get conversation container */
+            let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
+
+
+            /* creating new element */
+            let createP = document.createElement('p');
+            /* Create a class attribute */
+            const createClassAttr = document.createAttribute("class");
+            /* Set the value of the clas attribute */
+            createClassAttr.value = "iHelpChatCustomerCurrentMessage";
+
+            // Add the href attribute to an element:
+            createP.setAttributeNode(createClassAttr);
+            createP.innerHTML = iHelpChatWriteYourMessage.value;
+            iHelpChatConversationDetails.append(createP);
+
+
         }
 
     }
