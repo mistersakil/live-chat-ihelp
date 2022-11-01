@@ -19,7 +19,7 @@
     style="width:50px; height: 50px; border-radius: 50%; position: absolute; right: 10px; bottom: 10px; cursor:pointer" />
 
 <section id="iHelpLiveChatContainer" style="width: 300px;height:500px; display:flex; flex-direction: column;
-    background: grey; position: fixed; right: 70px; bottom: 0; color:white; font-size:16px" data-display="hidden">
+    background: #bf1a1a; position: fixed; right: 70px; bottom: 0; color:white; font-size:16px" data-display="hidden">
     <h2 style="width: 100%;
     font-size: 20px;
     font-weight: 900;
@@ -244,7 +244,6 @@
         padding: 10px;
         gap: 5px;
         margin-bottom: 10px;
-        border-bottom: 1px solid dimgrey;
         " id="iHelpChatBtnGroup">
             <input style="
             width: 50%;
