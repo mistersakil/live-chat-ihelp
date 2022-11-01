@@ -139,6 +139,9 @@
             text-transform: capitalize;
             overflow-x: hidden;
             overflow-y: scroll;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;           
 
             " id="iHelpChatConversationDetails">
                 <div class="iHelpChatAgentCurrentMessage" style="
@@ -148,15 +151,64 @@
                 border-radius: 10px;
                 ">
                     <p style="
-                    font-size: 20px;
+                    font-size: 16px;
                     font-weight: 700;
+                    font-style:italic;
                     ">System</p>
                     <p>Please wait, we will come back you soon</p>
                 </div>
+                <!-- /#iHelpChatAgentCurrentMessage -->
+                <div class="iHelpChatCustomerCurrentMessage" style="
+                background-color: #ffade7;
+                padding: 5px;
+                height: auto;
+                border-radius: 10px;
+                ">
+                    <p style="
+                    font-size: 16px;
+                    font-weight: 700;
+                    font-style:italic;
+                    ">Mister Kiron</p>
+                    <p>I need support</p>
+                </div>
+                <!-- /#iHelpChatCustomerCurrentMessage -->
+                <!-- /#iHelpChatAgentCurrentMessage -->
+                <div class="iHelpChatCustomerCurrentMessage" style="
+                background-color: #ffade7;
+                padding: 5px;
+                height: auto;
+                border-radius: 10px;
+                ">
+                    <p style="
+                    font-size: 16px;
+                    font-weight: 700;
+                    font-style:italic;
+                    ">Mister Kiron</p>
+                    <p>how agent panel works?</p>
+                </div>
+                <!-- /#iHelpChatCustomerCurrentMessage -->
+
+                <div class="iHelpChatAgentCurrentMessage" style="
+                background-color: pink;
+                padding: 5px;
+                height: auto;
+                border-radius: 10px;
+                ">
+                    <p style="
+                    font-size: 16px;
+                    font-weight: 700;
+                    font-style:italic;
+                    ">Farjana</p>
+                    <p>Hi, i'm farjana. Don't worry , we can have a meeting on google meet to demonstrate our agent
+                        panel, then we will
+                        go through it and let you understand our agent panel crystal clear to you. </p>
+                </div>
+                <!-- /#iHelpChatAgentCurrentMessage -->
 
             </main>
+            <!-- /#iHelpChatConversationDetails -->
         </div>
-
+        <!--  /#iHelpChatConversation -->
         <p style="
         display: flex;
         flex-direction: column;
@@ -180,6 +232,7 @@
             resize: none;
             height: 50px;
             " id="iHelpChatWiteYourMessage" type="text"></textarea>
+            <!-- /#iHelpChatWiteYourMessage -->
         </p>
         <div style="
         display: flex;
@@ -192,7 +245,7 @@
         gap: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid dimgrey;
-        ">
+        " id="iHelpChatBtnGroup">
             <input style="
             width: 50%;
             height: 40px;
@@ -219,6 +272,7 @@
 
             " id="iHelpChatStopSession" type="button" value="Stop Chat" />
         </div>
+        <!-- /#iHelpChatBtnGroup -->
     </aside>
     <!-- End: Conversation section  -->
 

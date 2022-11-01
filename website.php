@@ -50,7 +50,13 @@
             displayToggler(iHelpLiveChatContainer);
         });
 
-        /* Start conversation after register */
+        /* Show conversation panel after register */
+        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
+            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
+            displayToggler(iHelpChatRegistrationForm);
+        }
+        /* Send conversation text to customer care */
+
         document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
             let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
             displayToggler(iHelpChatRegistrationForm);
