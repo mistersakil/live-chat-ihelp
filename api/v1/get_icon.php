@@ -136,7 +136,6 @@
             background:transparent;       
             color:rgba(100,100,100,1);  
             text-align: left;
-            text-transform: capitalize;
             overflow-x: hidden;
             overflow-y: scroll;
             display: flex;
