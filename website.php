@@ -23,7 +23,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: center;
-        font-size: 40px;
+        font-size: 10px;
         color: darkcyan;
 
     }
@@ -67,17 +67,29 @@
             let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
 
 
-            /* creating new element */
+            /* creating new div element */
+            let createDiv = document.createElement('div');
+            createDiv.style.backgroundColor = "white";
+            createDiv.style.padding = "5px";
+            createDiv.style.height = "auto";
+            createDiv.style.borderRadius = "10px";
+            /* creating new p elements */
             let createP = document.createElement('p');
-            /* Create a class attribute */
-            const createClassAttr = document.createAttribute("class");
-            /* Set the value of the clas attribute */
-            createClassAttr.value = "iHelpChatCustomerCurrentMessage";
+            let createPText = document.createElement('p');
+            createP.style.fontSize = "16px";
+            createP.style.fontStyle = "italic";
+            createP.style.fontWeight = "700";
+            createP.innerHTML = "Mister Kiron";
+            createDiv.insertAdjacentHTML('afterbegin', createP.outerHTML);
+            createPText.innerHTML = iHelpChatWriteYourMessage.value;
+            /** Generate final chat text */
+            createDiv.insertAdjacentHTML('beforeend', createPText.outerHTML);
+            iHelpChatConversationDetails.append(createDiv);
+            /** Scroll to top */
+            iHelpChatConversationDetails.scrollTop = iHelpChatConversationDetails.scrollHeight;
 
-            // Add the href attribute to an element:
-            createP.setAttributeNode(createClassAttr);
-            createP.innerHTML = iHelpChatWriteYourMessage.value;
-            iHelpChatConversationDetails.append(createP);
+            /* Reset write your message input field */
+            iHelpChatWriteYourMessage.value = "";
 
 
         }

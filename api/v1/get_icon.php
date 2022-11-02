@@ -1,22 +1,21 @@
 <style>
-#iHelpChatConversationDetails::-webkit-scrollbar {
-    width: 1px;
-    background: rgba(100, 100, 100, .3);
-}
+    #iHelpChatConversationDetails::-webkit-scrollbar {
+        width: 1px;
+        background: rgba(100, 100, 100, .3);
+    }
 
-#iHelpChatConversationDetails::-webkit-scrollbar-track {
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 255, 1); */
-    border-radius: 15px;
-}
+    #iHelpChatConversationDetails::-webkit-scrollbar-track {
+        /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 255, 1); */
+        border-radius: 15px;
+    }
 
-#iHelpChatConversationDetails::-webkit-scrollbar-thumb {
-    border-radius: 15px;
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
-    background: transparent;
-}
+    #iHelpChatConversationDetails::-webkit-scrollbar-thumb {
+        border-radius: 15px;
+        /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
+        background: transparent;
+    }
 </style>
-<img class="logo" src="https://ihelpbd.com/images_old/favicon.ico" alt="logo"
-    style="width:50px; height: 50px; border-radius: 50%; position: absolute; right: 10px; bottom: 10px; cursor:pointer" />
+<img class="logo" src="https://ihelpbd.com/images_old/favicon.ico" alt="logo" style="width:50px; height: 50px; border-radius: 50%; position: absolute; right: 10px; bottom: 10px; cursor:pointer" />
 
 <section id="iHelpLiveChatContainer" style="width: 300px;height:500px; display:flex; flex-direction: column;
     background: #bf1a1a; position: fixed; right: 70px; bottom: 0; color:white; font-size:16px" data-display="hidden">
@@ -145,7 +144,7 @@
 
             " id="iHelpChatConversationDetails">
                 <div class="iHelpChatAgentCurrentMessage" style="
-                background-color: pink;
+                background-color: orange;
                 padding: 5px;
                 height: auto;
                 border-radius: 10px;
@@ -159,7 +158,7 @@
                 </div>
                 <!-- /#iHelpChatAgentCurrentMessage -->
                 <div class="iHelpChatCustomerCurrentMessage" style="
-                background-color: #ffade7;
+                background-color: white;
                 padding: 5px;
                 height: auto;
                 border-radius: 10px;
