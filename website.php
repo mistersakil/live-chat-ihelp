@@ -44,29 +44,12 @@
     fetchLiveChat();
 
     window.onload = function() {
-
+        let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
         let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
-        document.querySelector('.logo').addEventListener('click', function() {
-            displayToggler(iHelpLiveChatContainer);
-        });
 
-        /* Show conversation panel after register */
-        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
-            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
-            displayToggler(iHelpChatRegistrationForm);
-        }
-        /* Send conversation text to customer care */
-
-        document.querySelector('#iHelpChatSendTextBtn').onclick = function() {
-            let iHelpChatCustomerCurrentMessage = document.querySelector('.iHelpChatCustomerCurrentMessage');
-            let customerName = iHelpChatCustomerCurrentMessage.querySelector('.customerName');
-            let customerText = iHelpChatCustomerCurrentMessage.querySelector('.customerText');
-            /* Get write your message box */
-            let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
+        function putCustomerMessageToConversationContainer() {
             /* Get conversation container */
             let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
-
-
             /* creating new div element */
             let createDiv = document.createElement('div');
             createDiv.style.backgroundColor = "white";
@@ -90,10 +73,61 @@
 
             /* Reset write your message input field */
             iHelpChatWriteYourMessage.value = "";
-
-
         }
 
+        /** Display iHelpLiveChatContainer on logo click */
+        document.querySelector('.logo').addEventListener('click', function() {
+            displayToggler(iHelpLiveChatContainer);
+        });
+
+        /* Show conversation panel after register */
+        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
+            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
+            displayToggler(iHelpChatRegistrationForm);
+        }
+
+        /* Send customer text to support center on btn click */
+        document.querySelector('#iHelpChatSendTextBtn').onclick = function() {
+            putCustomerMessageToConversationContainer();
+        }
+
+        /**
+         * get caret
+         */
+        function getCaret(el) {
+            if (el.selectionStart) {
+                return el.selectionStart;
+            } else if (document.selection) {
+                el.focus();
+                var r = document.selection.createRange();
+                if (r == null) {
+                    return 0;
+                }
+                var re = el.createTextRange(),
+                    rc = re.duplicate();
+                re.moveToBookmark(r.getBookmark());
+                rc.setEndPoint('EndToStart', re);
+                return rc.text.length;
+            }
+            return 0;
+        }
+
+        /* Send customer text to support center on enter key press */
+        iHelpChatWriteYourMessage.addEventListener('keydown', function(e) {
+
+            if (e.keyCode === 13) {
+                var content = this.value;
+                var caret = getCaret(this);
+                if (e.ctrlKey) {
+                    this.value = content.substring(0, caret - 1) + "\n" + content.substring(caret, content
+                        .length);
+                    event.stopPropagation();
+                } else {
+                    e.preventDefault();
+                    putCustomerMessageToConversationContainer();
+                }
+            }
+        });
     }
 
     /**
