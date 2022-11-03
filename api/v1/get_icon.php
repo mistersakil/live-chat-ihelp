@@ -186,7 +186,7 @@
         gap: 5px;
         margin-bottom: 10px;
         border-bottom: 1px solid dimgrey;
-        ">
+        " id="iHelpChatWriteYourMessageContainer">
             <label for="iHelpChatWriteYourMessage" title="Required">
                 Write your message
             </label>
@@ -212,9 +212,10 @@
         padding: 10px;
         gap: 5px;
         margin-bottom: 10px;
+        flex-wrap: wrap;
         " id="iHelpChatBtnGroup">
             <input style="
-            width: 50%;
+            width: 40%;
             height: 40px;
             padding: 5px;
             font-size: 16px;
@@ -223,11 +224,12 @@
             cursor:pointer;
             background: darkred;
             color:white;
+            flex-grow:1;
 
             " id="iHelpChatSendTextBtn" type="button" value="Send" />
 
             <input style="
-            width: 50%;
+            width: 40%;
             height: 40px;
             padding: 5px;
             font-size: 16px;
@@ -236,8 +238,38 @@
             cursor:pointer;
             background: red;
             color:white;
+            flex-grow:1;
 
             " id="iHelpChatStopSession" type="button" value="Stop Chat" />
+
+            <input style="
+            width: 40%;
+            height: 40px;
+            padding: 5px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            cursor:pointer;
+            background: darkred;
+            color:white;
+            display:none;
+            flex-grow:1;
+
+            " id="iHelpChatCopyConversationBtn" type="button" value="Copy Chat Text" />
+
+            <input style="
+            width: 40%;
+            height: 40px;
+            padding: 5px;
+            font-size: 16px;
+            outline: none;
+            border: none;
+            cursor:pointer;
+            background: red;
+            color:white;
+            display:none;
+            flex-grow:1;
+            " id="iHelpChatGoBackHomeBtn" type="button" value="Go Back" />
         </div>
         <!-- /#iHelpChatBtnGroup -->
     </aside>

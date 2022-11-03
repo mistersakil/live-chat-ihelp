@@ -42,10 +42,14 @@
         document.body.prepend(div);
     }
     fetchLiveChat();
-
+    /** Operations after window load */
     window.onload = function() {
+        /* Chat placeholders declaration from API */
+        let iHelpChatWriteYourMessageContainer = document.querySelector('#iHelpChatWriteYourMessageContainer');
         let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
         let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
+        let iHelpChatCopyConversationBtn = document.querySelector('#iHelpChatCopyConversationBtn');
+        let iHelpChatGoBackHomeBtn = document.querySelector('#iHelpChatGoBackHomeBtn');
 
         function putCustomerMessageToConversationContainer() {
             /* Get conversation container */
@@ -79,8 +83,6 @@
             } else {
                 alert('invalid content');
             }
-
-
             /* Reset write your message input field */
             iHelpChatWriteYourMessage.value = "";
         }
@@ -138,7 +140,19 @@
                 }
             }
         });
+
+        /* Stop chat session on btn click */
+        document.querySelector('#iHelpChatStopSession').onclick = function(event) {
+            let areYouSure = confirm('Are you sure?');
+            if (areYouSure) {
+                iHelpChatWriteYourMessageContainer.style.display = 'none';
+                iHelpChatCopyConversationBtn.style.display = 'initial';
+                iHelpChatGoBackHomeBtn.style.display = 'initial';
+            }
+        }
     }
+
+    /** End: Operations after window load */
 
     /**
      * Display toggler
