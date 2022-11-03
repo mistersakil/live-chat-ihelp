@@ -44,16 +44,20 @@
     fetchLiveChat();
     /** Operations after window load */
     window.onload = function() {
-        /* Chat placeholders declaration from API */
+        /* Variable declarations from API pointing to DOM */
+        let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
         let iHelpChatWriteYourMessageContainer = document.querySelector('#iHelpChatWriteYourMessageContainer');
         let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
         let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
         let iHelpChatCopyConversationBtn = document.querySelector('#iHelpChatCopyConversationBtn');
         let iHelpChatGoBackHomeBtn = document.querySelector('#iHelpChatGoBackHomeBtn');
+        let iHelpChatStopSession = document.querySelector('#iHelpChatStopSession');
+        let iHelpChatSendTextBtn = document.querySelector('#iHelpChatSendTextBtn');
+
 
         function putCustomerMessageToConversationContainer() {
             /* Get conversation container */
-            let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
+
             /* creating new div element */
             let createDiv = document.createElement('div');
             createDiv.style.backgroundColor = "white";
@@ -69,9 +73,9 @@
             createP.innerHTML = "Mister Kiron";
             createDiv.insertAdjacentHTML('afterbegin', createP.outerHTML);
 
-            console.log(iHelpChatWriteYourMessage.value);
+
             let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
-            console.log(perseMessage);
+
             if (perseMessage.length > 0) {
                 createPText.innerHTML = perseMessage;
                 /** Generate final chat text */
@@ -99,7 +103,7 @@
         }
 
         /* Send customer text to support center on btn click */
-        document.querySelector('#iHelpChatSendTextBtn').onclick = function() {
+        iHelpChatSendTextBtn.onclick = function() {
             putCustomerMessageToConversationContainer();
         }
 
@@ -142,13 +146,22 @@
         });
 
         /* Stop chat session on btn click */
-        document.querySelector('#iHelpChatStopSession').onclick = function(event) {
+        iHelpChatStopSession.onclick = function(event) {
             let areYouSure = confirm('Are you sure?');
             if (areYouSure) {
                 iHelpChatWriteYourMessageContainer.style.display = 'none';
                 iHelpChatCopyConversationBtn.style.display = 'initial';
                 iHelpChatGoBackHomeBtn.style.display = 'initial';
+                iHelpChatStopSession.style.display = 'none';
+                iHelpChatSendTextBtn.style.display = 'none';
+                iHelpChatConversationDetails.style.height = '353px';
             }
+        }
+
+        /* Copy to clipboard full conversation text on btn click */
+        iHelpChatCopyConversationBtn.onclick = function(event) {
+            navigator.clipboard.writeText(iHelpChatConversationDetails.innerText);
+
         }
     }
 
