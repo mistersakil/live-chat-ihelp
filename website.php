@@ -64,12 +64,22 @@
             createP.style.fontWeight = "700";
             createP.innerHTML = "Mister Kiron";
             createDiv.insertAdjacentHTML('afterbegin', createP.outerHTML);
-            createPText.innerHTML = iHelpChatWriteYourMessage.value;
-            /** Generate final chat text */
-            createDiv.insertAdjacentHTML('beforeend', createPText.outerHTML);
-            iHelpChatConversationDetails.append(createDiv);
-            /** Scroll to top */
-            iHelpChatConversationDetails.scrollTop = iHelpChatConversationDetails.scrollHeight;
+
+            console.log(iHelpChatWriteYourMessage.value);
+            let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
+            console.log(perseMessage);
+            if (perseMessage.length > 0) {
+                createPText.innerHTML = perseMessage;
+                /** Generate final chat text */
+                createDiv.insertAdjacentHTML('beforeend', createPText.outerHTML);
+                /** Append final text to container */
+                iHelpChatConversationDetails.append(createDiv);
+                /** Scroll to top */
+                iHelpChatConversationDetails.scrollTop = iHelpChatConversationDetails.scrollHeight;
+            } else {
+                alert('invalid content');
+            }
+
 
             /* Reset write your message input field */
             iHelpChatWriteYourMessage.value = "";
