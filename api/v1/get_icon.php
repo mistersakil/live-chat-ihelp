@@ -5,13 +5,11 @@
 }
 
 #iHelpChatConversationDetails::-webkit-scrollbar-track {
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 255, 1); */
     border-radius: 15px;
 }
 
 #iHelpChatConversationDetails::-webkit-scrollbar-thumb {
     border-radius: 15px;
-    /* -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); */
     background: transparent;
 }
 </style>
@@ -144,27 +142,28 @@
 
             " id="iHelpChatConversationDetails">
                 <div class="iHelpChatAgentCurrentMessage" style="
-                background-color: orange;
+                background-color: #f5ffb7;
                 padding: 5px;
                 height: auto;
                 border-radius: 10px;
                 ">
                     <p style="
-                    font-size: 16px;
+                    font-size: 18px;
                     font-weight: 700;
                     font-style:italic;
                     display:flex;
                     justify-content:space-between;
-                    ">
+                    align-items:center;
+                    border-bottom: 1px solid rgba(150,150,150,.3);
+                    padding-bottom:3px;
+                    margin-bottom:3px;
+                    " class="iHelpChatUserInfo">
                         System
-                        <span class="dateTime" style="
-                        font-size: 10px;
-                        display:inline-block;
-                        text-align:right;
+                        <span class="iHelpChatDateTime" style="
+                        font-size: 12px;
                         "><?php echo date('M d, Y h:i A'); ?></span>
-
                     </p>
-                    <p>Please wait, we will come back you soon</p>
+                    <p class="iHelpChatConversationText">Please wait, we will come back you soon</p>
                 </div>
                 <!-- /#iHelpChatAgentCurrentMessage -->
                 <div class="iHelpChatCustomerCurrentMessage" style="
@@ -174,11 +173,23 @@
                 border-radius: 10px;
                 ">
                     <p style="
-                    font-size: 16px;
+                    font-size: 18px;
                     font-weight: 700;
-                    font-style:italic;
-                    " class="customerName">Mister Kiron</p>
-                    <p class="customerText">I need support</p>
+                    font-style:italic;                    
+                    display:flex;
+                    align-items:center;
+                    justify-content:space-between;
+                    border-bottom: 1px solid rgba(150,150,150,.3);
+                    padding-bottom:3px;
+                    margin-bottom:3px;
+                    " class="iHelpChatUserInfo">
+                        Mister Kiron
+                        <span class="iHelpChatDateTime" style="
+                        font-size: 12px;                        
+                        "><?php echo date('M d, Y h:i A'); ?></span>
+                    </p>
+                    <p class="iHelpChatConversationText" style="word-break: break">I need support with lot of questions
+                        and questions</p>
                 </div>
                 <!-- /.iHelpChatCustomerCurrentMessage -->
 
@@ -207,7 +218,7 @@
             outline: none;
             border: none;
             resize: none;
-            height: 50px;
+            height: 80px;
             word-break: break-word;
             " id="iHelpChatWriteYourMessage"></textarea>
             <!-- /#iHelpChatWriteYourMessage -->

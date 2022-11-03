@@ -58,30 +58,53 @@
         function putCustomerMessageToConversationContainer() {
             /* Get conversation container */
 
-            /* creating new div element */
-            let createDiv = document.createElement('div');
-            createDiv.style.backgroundColor = "white";
-            createDiv.style.padding = "5px";
-            createDiv.style.height = "auto";
-            createDiv.style.borderRadius = "10px";
-            /* creating new p elements */
-            let createP = document.createElement('p');
-            let createPText = document.createElement('p');
-            createP.style.fontSize = "16px";
-            createP.style.fontStyle = "italic";
-            createP.style.fontWeight = "700";
-            createP.innerHTML = "Mister Kiron";
-            createDiv.insertAdjacentHTML('afterbegin', createP.outerHTML);
+            /* creating new dom element & styles */
+            let iHelpChatCustomerCurrentMessage = document.createElement('div');
+            let iHelpChatUserInfo = document.createElement('p');
+            let iHelpChatConversationText = document.createElement('p');
+            let iHelpChatDateTime = document.createElement('span');
+
+            /* Style for iHelpChatCustomerCurrentMessage element */
+            iHelpChatCustomerCurrentMessage.style.backgroundColor = "white";
+            iHelpChatCustomerCurrentMessage.style.padding = "5px";
+            iHelpChatCustomerCurrentMessage.style.height = "auto";
+            iHelpChatCustomerCurrentMessage.style.borderRadius = "10px";
+
+            iHelpChatUserInfoStyle = {
+                fontSize: "18px",
+                fontWeight: "700",
+                fontStyle: "italic",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                borderBottom: "1px solid rgba(150,150,150,.3)",
+                paddingBottom: "3px",
+                marginBottom: "3px"
+            }
+            Object.assign(iHelpChatUserInfo.style, iHelpChatUserInfoStyle);
+
+            /* Style for iHelpChatDateTime element */
+            iHelpChatDateTime.style.fontSize = "12px";
+
+            iHelpChatUserInfo.innerHTML = "Mister Kiron";
+
+            iHelpChatDateTime.innerHTML = "03 nov 2022 07:26 PM";
+
+            iHelpChatUserInfo.insertAdjacentHTML('beforeend', iHelpChatDateTime.outerHTML);
+
+            iHelpChatCustomerCurrentMessage.insertAdjacentHTML('afterbegin', iHelpChatUserInfo.outerHTML);
 
 
             let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
 
             if (perseMessage.length > 0) {
-                createPText.innerHTML = perseMessage;
+                iHelpChatConversationText.style.wordBreak = "break";
+                iHelpChatConversationText.innerHTML = perseMessage;
                 /** Generate final chat text */
-                createDiv.insertAdjacentHTML('beforeend', createPText.outerHTML);
+                iHelpChatCustomerCurrentMessage.insertAdjacentHTML('beforeend', iHelpChatConversationText
+                    .outerHTML);
                 /** Append final text to container */
-                iHelpChatConversationDetails.append(createDiv);
+                iHelpChatConversationDetails.append(iHelpChatCustomerCurrentMessage);
                 /** Scroll to top */
                 iHelpChatConversationDetails.scrollTop = iHelpChatConversationDetails.scrollHeight;
             } else {
@@ -154,7 +177,7 @@
                 iHelpChatGoBackHomeBtn.style.display = 'initial';
                 iHelpChatStopSession.style.display = 'none';
                 iHelpChatSendTextBtn.style.display = 'none';
-                iHelpChatConversationDetails.style.height = '353px';
+                iHelpChatConversationDetails.style.height = '383px';
             }
         }
 
