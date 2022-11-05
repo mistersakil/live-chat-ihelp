@@ -183,7 +183,8 @@
                         font-size: 12px;
                         "><?php echo date('M d, Y h:i A'); ?></span>
                     </p>
-                    <p class="iHelpChatConversationText" style="word-break:break;">Please wait, we will come back you
+                    <p class="iHelpChatConversationText" style="word-break:break-word;">Please wait, we will come back
+                        you
                         soon</p>
                 </div>
                 <!-- /#iHelpChatAgentCurrentMessage -->

@@ -102,7 +102,7 @@
             let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
 
             if (perseMessage.length > 0) {
-                iHelpChatConversationText.style.wordBreak = "break";
+                iHelpChatConversationText.style.wordBreak = "break-word";
                 iHelpChatConversationText.innerHTML = perseMessage;
                 /** Generate final chat text */
                 iHelpChatCustomerCurrentMessage.insertAdjacentHTML('beforeend', iHelpChatConversationText
