@@ -45,14 +45,17 @@
     /** Operations after window load */
     window.onload = function() {
         /* Variable declarations from API pointing to DOM */
+        let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
+        let iHelpChatConversation = document.querySelector('#iHelpChatConversation');
         let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
         let iHelpChatWriteYourMessageContainer = document.querySelector('#iHelpChatWriteYourMessageContainer');
         let iHelpChatWriteYourMessage = document.querySelector('#iHelpChatWriteYourMessage');
         let iHelpLiveChatContainer = document.querySelector('#iHelpLiveChatContainer');
         let iHelpChatCopyConversationBtn = document.querySelector('#iHelpChatCopyConversationBtn');
-        let iHelpChatGoBackHomeBtn = document.querySelector('#iHelpChatGoBackHomeBtn');
+        let iHelpChatExitBtn = document.querySelector('#iHelpChatExitBtn');
         let iHelpChatStopSession = document.querySelector('#iHelpChatStopSession');
         let iHelpChatSendTextBtn = document.querySelector('#iHelpChatSendTextBtn');
+
 
 
         function putCustomerMessageToConversationContainer() {
@@ -121,7 +124,6 @@
 
         /* Show conversation panel after register */
         document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
-            let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
             displayToggler(iHelpChatRegistrationForm);
         }
 
@@ -174,7 +176,7 @@
             if (areYouSure) {
                 iHelpChatWriteYourMessageContainer.style.display = 'none';
                 iHelpChatCopyConversationBtn.style.display = 'initial';
-                iHelpChatGoBackHomeBtn.style.display = 'initial';
+                iHelpChatExitBtn.style.display = 'initial';
                 iHelpChatStopSession.style.display = 'none';
                 iHelpChatSendTextBtn.style.display = 'none';
                 iHelpChatConversationDetails.style.height = '383px';
@@ -185,6 +187,12 @@
         iHelpChatCopyConversationBtn.onclick = function(event) {
             navigator.clipboard.writeText(iHelpChatConversationDetails.innerText);
 
+        }
+
+        /* Go back to registration page after live chat on exit btn click */
+        iHelpChatExitBtn.onclick = function(event) {
+            iHelpChatRegistrationForm.style.display = "initial";
+            iHelpChatConversation.style.display = "none";
         }
     }
 
