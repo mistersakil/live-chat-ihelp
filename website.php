@@ -46,6 +46,7 @@
     window.onload = function() {
         /* Variable declarations from API pointing to DOM */
         let iHelpChatRegistrationForm = document.querySelector('#iHelpChatRegistrationForm');
+        let iHelpChatRegistrationBtn = document.querySelector('#iHelpChatRegistrationBtn');
         let iHelpChatConversation = document.querySelector('#iHelpChatConversation');
         let iHelpChatConversationDetails = document.querySelector('#iHelpChatConversationDetails');
         let iHelpChatWriteYourMessageContainer = document.querySelector('#iHelpChatWriteYourMessageContainer');
@@ -123,8 +124,9 @@
         });
 
         /* Show conversation panel after register */
-        document.querySelector('#iHelpChatRegistrationBtn').onclick = function() {
-            displayToggler(iHelpChatRegistrationForm);
+        iHelpChatRegistrationBtn.onclick = function() {
+            iHelpChatRegistrationForm.style.display = "none";
+            iHelpChatConversation.style.display = "initial";
         }
 
         /* Send customer text to support center on btn click */
