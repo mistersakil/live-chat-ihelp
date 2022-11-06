@@ -161,7 +161,7 @@
             gap: 10px;           
 
             " id="iHelpChatConversationDetails">
-                <div class="iHelpChatAgentCurrentMessage" style="
+                <div class="iHelpChatSystemGenerateMessage" style="
                 background-color: #f5ffb7;
                 padding: 5px;
                 height: auto;
@@ -187,7 +187,7 @@
                         you
                         soon</p>
                 </div>
-                <!-- /#iHelpChatAgentCurrentMessage -->
+                <!-- /#iHelpChatSystemGenerateMessage -->
                 <div class="iHelpChatCustomerCurrentMessage" style="
                 background-color: white;
                 padding: 5px;

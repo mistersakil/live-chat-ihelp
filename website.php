@@ -56,12 +56,56 @@
         let iHelpChatExitBtn = document.querySelector('#iHelpChatExitBtn');
         let iHelpChatStopSession = document.querySelector('#iHelpChatStopSession');
         let iHelpChatSendTextBtn = document.querySelector('#iHelpChatSendTextBtn');
+        let iHelpChatSystemGenerateMessage = document.querySelector('#iHelpChatSystemGenerateMessage');
 
 
 
+        /** Generate specific message and put it to conversation container */
+        function iHelpChatSystemGenerateMessageProcess() {
+            /* creating new dom element & styles */
+            let iHelpChatCustomerCurrentMessage = document.createElement('div');
+            let iHelpChatUserInfo = document.createElement('p');
+            let iHelpChatConversationText = document.createElement('p');
+            let iHelpChatDateTime = document.createElement('span');
+
+            /* Style for iHelpChatCustomerCurrentMessage element */
+            iHelpChatCustomerCurrentMessage.style.backgroundColor = "white";
+            iHelpChatCustomerCurrentMessage.style.padding = "5px";
+            iHelpChatCustomerCurrentMessage.style.height = "auto";
+            iHelpChatCustomerCurrentMessage.style.borderRadius = "10px";
+
+            iHelpChatUserInfoStyle = {
+                fontSize: "18px",
+                fontWeight: "700",
+                fontStyle: "italic",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                borderBottom: "1px solid rgba(150,150,150,.3)",
+                paddingBottom: "3px",
+                marginBottom: "3px"
+            }
+            Object.assign(iHelpChatUserInfo.style, iHelpChatUserInfoStyle);
+
+            /* Style for iHelpChatDateTime element */
+            iHelpChatDateTime.style.fontSize = "12px";
+
+            iHelpChatUserInfo.innerHTML = "System user";
+
+            iHelpChatDateTime.innerHTML = "03 nov 2022 07:26 PM";
+
+            iHelpChatUserInfo.insertAdjacentHTML('beforeend', iHelpChatDateTime.outerHTML);
+
+            iHelpChatCustomerCurrentMessage.insertAdjacentHTML('afterbegin', iHelpChatUserInfo.outerHTML);
+
+
+            let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
+
+        }
+
+
+        /** Generate specific message and put it to conversation container */
         function putCustomerMessageToConversationContainer() {
-            /* Get conversation container */
-
             /* creating new dom element & styles */
             let iHelpChatCustomerCurrentMessage = document.createElement('div');
             let iHelpChatUserInfo = document.createElement('p');
@@ -127,6 +171,10 @@
         iHelpChatRegistrationBtn.onclick = function() {
             iHelpChatRegistrationForm.style.display = "none";
             iHelpChatConversation.style.display = "initial";
+            iHelpChatCopyConversationBtn.style.display = 'none';
+            iHelpChatExitBtn.style.display = 'none';
+            iHelpChatStopSession.style.display = 'initial';
+            iHelpChatSendTextBtn.style.display = 'initial';
         }
 
         /* Send customer text to support center on btn click */
@@ -195,6 +243,8 @@
         iHelpChatExitBtn.onclick = function(event) {
             iHelpChatRegistrationForm.style.display = "initial";
             iHelpChatConversation.style.display = "none";
+            iHelpChatWriteYourMessageContainer.style.display = "flex";
+            iHelpChatConversationDetails.style.height = '253px';
         }
     }
 
