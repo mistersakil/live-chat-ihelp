@@ -63,16 +63,16 @@
         /** Generate specific message and put it to conversation container */
         function iHelpChatSystemGenerateMessageProcess() {
             /* creating new dom element & styles */
-            let iHelpChatCustomerCurrentMessage = document.createElement('div');
+            let iHelpChatSystemInitialMessage = document.createElement('div');
             let iHelpChatUserInfo = document.createElement('p');
             let iHelpChatConversationText = document.createElement('p');
             let iHelpChatDateTime = document.createElement('span');
 
-            /* Style for iHelpChatCustomerCurrentMessage element */
-            iHelpChatCustomerCurrentMessage.style.backgroundColor = "white";
-            iHelpChatCustomerCurrentMessage.style.padding = "5px";
-            iHelpChatCustomerCurrentMessage.style.height = "auto";
-            iHelpChatCustomerCurrentMessage.style.borderRadius = "10px";
+            /* Style for iHelpChatSystemInitialMessage element */
+            iHelpChatSystemInitialMessage.style.backgroundColor = "GreenYellow";
+            iHelpChatSystemInitialMessage.style.padding = "5px";
+            iHelpChatSystemInitialMessage.style.height = "auto";
+            iHelpChatSystemInitialMessage.style.borderRadius = "10px";
 
             iHelpChatUserInfoStyle = {
                 fontSize: "18px",
@@ -89,20 +89,18 @@
 
             /* Style for iHelpChatDateTime element */
             iHelpChatDateTime.style.fontSize = "12px";
-
-            iHelpChatUserInfo.innerHTML = "System user";
-
+            iHelpChatUserInfo.innerHTML = "System";
             iHelpChatDateTime.innerHTML = "03 nov 2022 07:26 PM";
-
             iHelpChatUserInfo.insertAdjacentHTML('beforeend', iHelpChatDateTime.outerHTML);
+            iHelpChatSystemInitialMessage.insertAdjacentHTML('afterbegin', iHelpChatUserInfo.outerHTML);
+            iHelpChatConversationText.style.wordBreak = "break-word";
+            iHelpChatConversationText.innerHTML = "Please wait we will come back you soon";
+            iHelpChatSystemInitialMessage.insertAdjacentHTML('beforeend', iHelpChatConversationText.outerHTML);
+            iHelpChatConversationDetails.innerHTML = '';
 
-            iHelpChatCustomerCurrentMessage.insertAdjacentHTML('afterbegin', iHelpChatUserInfo.outerHTML);
-
-
-            let perseMessage = iHelpChatWriteYourMessage.value.replace(/<[^>]+>/g, '');
+            iHelpChatConversationDetails.append(iHelpChatSystemInitialMessage);
 
         }
-
 
         /** Generate specific message and put it to conversation container */
         function putCustomerMessageToConversationContainer() {
@@ -175,6 +173,7 @@
             iHelpChatExitBtn.style.display = 'none';
             iHelpChatStopSession.style.display = 'initial';
             iHelpChatSendTextBtn.style.display = 'initial';
+            iHelpChatSystemGenerateMessageProcess();
         }
 
         /* Send customer text to support center on btn click */

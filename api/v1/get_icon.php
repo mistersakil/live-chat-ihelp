@@ -162,7 +162,7 @@
 
             " id="iHelpChatConversationDetails">
                 <div class="iHelpChatSystemGenerateMessage" style="
-                background-color: #f5ffb7;
+                background-color: orange;
                 padding: 5px;
                 height: auto;
                 border-radius: 10px;
@@ -184,8 +184,7 @@
                         "><?php echo date('M d, Y h:i A'); ?></span>
                     </p>
                     <p class="iHelpChatConversationText" style="word-break:break-word;">Please wait, we will come back
-                        you
-                        soon</p>
+                        you soon</p>
                 </div>
                 <!-- /#iHelpChatSystemGenerateMessage -->
                 <div class="iHelpChatCustomerCurrentMessage" style="
