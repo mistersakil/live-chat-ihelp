@@ -35,7 +35,7 @@
 
     <script>
     async function fetchLiveChat() {
-        let getIconApi = await fetch('./api/v1/get_icon.php');
+        let getIconApi = await fetch('./api/v1/activate_live_chat.php');
         let getResponseText = await getIconApi.text();
         const div = document.createElement("div");
         div.innerHTML = getResponseText;
