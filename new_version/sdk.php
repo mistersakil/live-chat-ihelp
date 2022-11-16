@@ -172,14 +172,40 @@
                 displayToggler(iHelpLiveChatContainer);
             });
 
-            /* Show conversation panel after register */
+            /**  
+             * Show conversation panel after register and hide registration form
+             **/
             iHelpChatRegistrationBtn.onclick = function() {
+                /* Validate registration form before going further process  */
+
+                let formData = {};
+                formData.fullName = document.querySelector('#fullName').value;
+                formData.mobileNumber = document.querySelector('#mobileNumber').value;
+                formData.emailID = document.querySelector('#emailID').value;
+                formData.question = document.querySelector('#question').value;
+                console.log(formData);
+                let dataLength = Object.keys(formData).length;
+                console.log(dataLength);
+                if (formData.length === 4) {
+                    console.log(formData);
+                } else {
+                    console.log('erros');
+                    return;
+                }
+
+                // Hide registration form 
                 iHelpChatRegistrationForm.style.display = "none";
+                // Display conversation form
                 iHelpChatConversation.style.display = "initial";
+                // Hide conversation copy btn
                 iHelpChatCopyConversationBtn.style.display = 'none';
+                // Hide conversation exit btn
                 iHelpChatExitBtn.style.display = 'none';
+                // Display chat stop btn
                 iHelpChatStopSession.style.display = 'initial';
+                // Display send chat text message btn
                 iHelpChatSendTextBtn.style.display = 'initial';
+                // Process and generate message block
                 iHelpChatSystemGenerateMessageProcess();
             }
 
