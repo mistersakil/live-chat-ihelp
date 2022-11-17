@@ -41,6 +41,9 @@
     function checkObjPropertiesNotEmpty(obj) {
         for (let key in obj) {
             if (obj[key] == null || obj[key] == "") {
+                // <span id="fullNameErrorMsg"></span>
+                let el = document.querySelector(`#${key}ErrorMsg`).innerText = 'Required';
+                console.log(el);
                 return false;
             }
         }
@@ -206,9 +209,9 @@
             formData.mobileNumber = mobileNumber.value;
             formData.emailID = emailID.value;
             formData.question = question.value;
-            console.log(formData);
+
             let isValidated = checkObjPropertiesNotEmpty(formData);
-            console.log(isValidated);
+
             if (isValidated) {
                 /* Reset registration form values */
                 fullName.value = "";

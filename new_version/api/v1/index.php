@@ -39,6 +39,7 @@
             <label for="fullName" title="Required">
                 Full Name
                 <sup>*</sup>
+                <span id="fullNameErrorMsg"></span>
             </label>
             <input style="width: 100%;
     height: 40px;
