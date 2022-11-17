@@ -76,6 +76,11 @@
         let iHelpChatSendTextBtn = document.querySelector('#iHelpChatSendTextBtn');
         let iHelpChatSystemGenerateMessage = document.querySelector('#iHelpChatSystemGenerateMessage');
 
+        /* Customer registration form fields */
+        let fullName = document.querySelector('#fullName');
+        let mobileNumber = document.querySelector('#mobileNumber');
+        let emailID = document.querySelector('#emailID');
+        let question = document.querySelector('#question');
 
         /** Generate specific message and put it to conversation container */
         function iHelpChatSystemGenerateMessageProcess() {
@@ -197,27 +202,32 @@
             /* Validate registration form before going further process  */
 
             let formData = {};
-            formData.fullName = document.querySelector('#fullName').value;
-            formData.mobileNumber = document.querySelector('#mobileNumber').value;
-            formData.emailID = document.querySelector('#emailID').value;
-            formData.question = document.querySelector('#question').value;
+            formData.fullName = fullName.value;
+            formData.mobileNumber = mobileNumber.value;
+            formData.emailID = emailID.value;
+            formData.question = question.value;
             console.log(formData);
             let isValidated = checkObjPropertiesNotEmpty(formData);
             console.log(isValidated);
             if (isValidated) {
-                // Hide registration form 
+                /* Reset registration form values */
+                fullName.value = "";
+                mobileNumber.value = "";
+                emailID.value = "";
+                question.value = "";
+                /* Hide registration form  */
                 iHelpChatRegistrationForm.style.display = "none";
-                // Display conversation form
+                /* Display conversation form */
                 iHelpChatConversation.style.display = "initial";
-                // Hide conversation copy btn
+                /* Hide conversation copy btn */
                 iHelpChatCopyConversationBtn.style.display = 'none';
-                // Hide conversation exit btn
+                /* Hide conversation exit btn */
                 iHelpChatExitBtn.style.display = 'none';
-                // Display chat stop btn
+                /* Display chat stop btn */
                 iHelpChatStopSession.style.display = 'initial';
-                // Display send chat text message btn
+                /* Display send chat text message btn */
                 iHelpChatSendTextBtn.style.display = 'initial';
-                // Process and generate message block
+                /* Process and generate message block */
                 iHelpChatSystemGenerateMessageProcess();
             }
 
